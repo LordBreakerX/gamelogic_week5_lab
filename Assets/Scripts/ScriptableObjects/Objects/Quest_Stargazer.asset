@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fed676fe98704bf46ac6705dc4aecaaa, type: 3}
-  m_Name: Quest_FetchApples
+  m_Name: Quest_Stargazer
   m_EditorClassIdentifier: 
-  questName: Fetch Apples
-  questDescription: Collect 3 Apples
-  objectiveItem: {fileID: 11400000, guid: 3796ca3d69c7a01459ce5a2ff10a16ba, type: 2}
-  objectiveQuantity: 3
+  questName: Stargazer
+  questDescription: collect 5 Intertwined Fates
+  objectiveItem: {fileID: 11400000, guid: c0c8d51d331fb884a89cbced72d2d78b, type: 2}
+  objectiveQuantity: 5
   rewardItems:
-  - {fileID: 11400000, guid: a3e857838b97fc44dbf611836904f600, type: 2}
+  - {fileID: 11400000, guid: 4ac83a9164fa6f445abeed52313febb9, type: 2}

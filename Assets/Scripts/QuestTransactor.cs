@@ -9,6 +9,9 @@ public class QuestTransactor : MonoBehaviour
     public PlayerQuestManager pqm;
     public NPCQuestManager npcQuestManager;
 
+    [HideInInspector]
+    public List<GameObject> items;
+
     public void RequestQuest()
     {
         if (pqm.activeQuest == null)
@@ -18,13 +21,35 @@ public class QuestTransactor : MonoBehaviour
 
             Debug.Log("<color=green>Quest '" +
                 pqm.activeQuest.questName + "' started.</color>");
+            CountQuestItems();
         }
         else
         {
             if (pqm.questStatus == QuestStatus.Completed)
             {
                 pqm.questItems.AddRange(pqm.activeQuest.rewardItems);
-                pqm.questItems.RemoveAll(item => item == pqm.activeQuest.objectiveItem);
+
+                int itemsLeftToRemove = pqm.activeQuest.objectiveQuantity;
+
+                for (int x = 0; x < pqm.questItems.Count; )
+                {
+                    if (itemsLeftToRemove > 0 && pqm.questItems[x] == pqm.activeQuest.objectiveItem)
+                    {
+                        for (int i = 0; i < items.Count; )
+                        {
+                            if (items[i].GetComponent<Item>().item == pqm.questItems[x])
+                            {
+                                Destroy(items[i]);
+                            }
+                            ++i;
+                        }
+
+                        pqm.questItems.Remove(pqm.questItems[x]);
+                        itemsLeftToRemove--;
+                    }
+                    ++x;
+                }
+
                 pqm.activeQuest = null;
                 pqm.questStatus = QuestStatus.NotAvailable;
 
@@ -37,16 +62,7 @@ public class QuestTransactor : MonoBehaviour
         }
     }
 
-    public void AddQuestItem(ItemSO item)
-    {
-        if (pqm.activeQuest)
-        {
-            pqm.questItems.Add(item);
-            CountQuestItems();
-        }
-    }
-
-    private void CountQuestItems()
+    public void CountQuestItems()
     {
         int itemCount = 0;
         foreach(ItemSO item in pqm.questItems)

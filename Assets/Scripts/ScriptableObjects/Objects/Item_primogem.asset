@@ -9,8 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f582060cf7b3ead4b8df72f81d26194b, type: 3}
-  m_Name: Item_MacBookPro
+  m_Script: {fileID: 11500000, guid: cadea2fe790bdbe47bac680f72cef5e3, type: 3}
+  m_Name: Item_primogem
   m_EditorClassIdentifier: 
-  itemName: MacBook Pro
-  itemValue: 1799
+  itemName: Primogem
+  intemValue: 0
+  itemSprite: {fileID: 21300000, guid: 32738c801c5410c4badb820db9aa0ef5, type: 3}
